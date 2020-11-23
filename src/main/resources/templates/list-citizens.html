@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Citizen Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Citizen Directory</h3>
+    <hr>
+
+    <div>
+        User: <span sec:authentication="name"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+        <br><br>
+    </div>
+    <!-- form for adding new Citizen
+         and searching citizens by last name -->
+    <form th:action="@{/citizens/search}" class="form-inline">
+        <a th:href="@{/citizens/show-form-add}" class="btn btn-primary btn-sm mr-5 mb-3"> Add Employee </a>
+
+        <input class="form-control  ml-5 mr-sm-2 mb-3" type="search" name="name" placeholder="Search by name" />
+
+        <button class="btn btn-success mb-3" type="submit">Search</button>
+    </form>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Passport</th>
+            <!-- The Column shows only for Managers and Admins-->
+            <th sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <!-- Works like 'for' in java through Model from @Controllers-->
+            <tr th:each="citizen : ${citizensAttr}">
+
+                <td th:text="${citizen.firstName}" />
+                <td th:text="${citizen.lastName}" />
+                <td th:text="${citizen.passportNumber}" />
+
+                <!-- Ability for Manager and Admin -->
+                <td sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+                    <!-- Add "update" button/link -->
+                    <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+                        <a th:href="@{/citizens/show-form-update(citizenId=${citizen.id})}" class="btn btn-info btn-sm"> Update </a>
+                    </div>
+
+                    <!-- Add "delete" button/link -->
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/citizens/delete(citizenId=${citizen.id})}" class="btn btn-danger btn-sm"
+                           onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+                            Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Add a logout button -->
+    <form action="#" th:action="@{/logout}"
+          method="POST">
+
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+
+    </form>
+
+</div>
+
+</body>
+</html>
