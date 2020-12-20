@@ -13,13 +13,15 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     // Insert second @Override datasource
     // from DataSourceConfigs.class and set security configs.
+    private final DataSource dataSource;
 
     @Autowired
-    @Qualifier("securityDataSource")
-    private DataSource dataSource;
+    public SecurityConfig(@Qualifier("securityDataSource") DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     // Set path to database with User and Role data.
     @Override

@@ -12,9 +12,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/citizens")
 public class CitizenController {
+    private final CitizenService citizenService;
 
     @Autowired
-    private CitizenService citizenService;
+    public CitizenController(CitizenService citizenService) {
+        this.citizenService = citizenService;
+    }
 
     @GetMapping("/list")
     public String listEmployees(Model model) {

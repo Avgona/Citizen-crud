@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.avgona</groupId>
 	<artifactId>citizen-crud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>citizen-crud</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -69,6 +69,14 @@
 	</dependencies>
 
 	<build>
+		<!--Important If you do not set the resource, the @@ in the application.yaml can't find the configuration in the pom file -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -77,4 +85,12 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 </project>

@@ -10,9 +10,12 @@ import java.util.Optional;
 
 @Service
 public class CitizenServiceImpl implements CitizenService{
+    private final CitizenRepository citizenRepository;
 
     @Autowired
-    private CitizenRepository citizenRepository;
+    public CitizenServiceImpl(CitizenRepository citizenRepository) {
+        this.citizenRepository = citizenRepository;
+    }
 
     @Override
     public List<Citizen> findAll() {
