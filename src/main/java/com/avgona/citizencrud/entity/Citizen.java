@@ -1,31 +1,34 @@
 package com.avgona.citizencrud.entity;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.FieldDefaults;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Entity
 @Table(name = "citizen")
 public class Citizen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private long id;
 
     @Column(name = "first_name")
-    String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    String lastName;
+    private String lastName;
 
     @Column(name = "passport_number")
-    String passportNumber;
+    private String passportNumber;
 
-    public Citizen(){}
+    @Enumerated(EnumType.STRING)
+    private Career career;
+
+    @Embedded
+    private Address address;
 }

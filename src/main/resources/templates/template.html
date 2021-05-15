@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+    <!-- Add header "Citizen repository -->
+    <div th:fragment="repository-header">
+        <br>
+        <h3 class="text-center">Citizen repository</h3>
+        <hr>
+    </div>
+
+
+    <!-- Add a panel with current user and him roles -->
+    <div th:fragment="user-role-panel">
+        User: <span sec:authentication="name"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+        <br><br>
+    </div>
+
+
+    <!-- add a panel with creating new user and search by last name -->
+    <div th:fragment="create-and-search-user">
+        <form th:action="@{/citizens/search}" class="form-inline">
+            <a th:href="@{/citizens/add}" class="btn btn-primary btn-sm mr-5 mb-3"> Add Citizen </a>
+
+            <input class="form-control mr-sm-2 mb-3" type="search" name="name" placeholder="Search by name" />
+
+            <button class="btn btn-success mb-3" type="submit">Search</button>
+        </form>
+    </div>
+
+
+    <!-- Add "update" button -->
+    <div th:fragment="update-button">
+        <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+            <a th:href="@{/citizens/update(id=${citizen.id})}" class="btn btn-info btn-sm"> Update </a>
+        </div>
+    </div>
+
+    <!-- Add "delete" button -->
+    <div th:fragment="delete-button">
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/citizens/delete(id=${citizen.id})}" class="btn btn-danger btn-sm mt-2"
+               onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+                Delete
+            </a>
+        </div>
+    </div>
+
+    <!-- Add "view details" button -->
+    <div th:fragment="details-button">
+        <a th:href="@{/citizens/details(id=${citizen.id})}" class="btn btn-info btn-sm"> View details </a>
+    </div>
+
+    <!-- Add a back to repository link -->
+    <div th:fragment="back-to-repository">
+        <a th:href="@{/citizens}">Back to repository</a>
+    </div>
+
+    <!-- Add a logout button -->
+    <div th:fragment="logout">
+        <form action="#" th:action="@{/logout}" method="POST">
+            <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+        </form>
+    </div>
+    </body>
+</html>

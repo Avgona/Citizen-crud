@@ -13,8 +13,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    // Insert second @Override datasource
-    // from DataSourceConfigs.class and set security configs.
+
     private final DataSource dataSource;
 
     @Autowired
@@ -22,15 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
-
-    // Set path to database with User and Role data.
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource);
     }
 
-    // Set access by roles to pages
-    // Set security page for login, logout and  access-denied page.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()

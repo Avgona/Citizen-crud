@@ -2,10 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <div>
@@ -18,8 +16,7 @@
                 <div style="padding-top: 30px" class="panel-body">
 
                     <!-- Login Form -->
-                    <form th:action="@{/authenticateTheUser}"
-                          method="POST" class="form-horizontal">
+                    <form th:action="@{/authenticateTheUser}" method="POST" class="form-horizontal">
 
                         <!-- Place for messages: error, alert etc ... -->
                         <div class="form-group">

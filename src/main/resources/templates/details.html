@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Details information</title>
+    </head>
+    <body class="container">
+        <br><br>
+
+        <h3 class="text-center">Details information of:</h3>
+        <h3 th:text="${citizen.passportNumber}" class="text-center"></h3>
+
+        <table class="table table-bordered ">
+            <tbody>
+                <tr>
+                    <th scope="col">First name</th>
+                    <td th:text="${citizen.firstName}" scope="col"></td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td th:text="${citizen.lastName}"></td>
+                </tr>
+                <tr>
+                    <th>Passport number</th>
+                    <td th:text="${citizen.passportNumber}"></td>
+                </tr>
+                <tr>
+                    <th>Career</th>
+                    <td th:text="${citizen.career}"></td>
+                </tr>
+                <tr>
+                    <th>Apartment</th>
+                    <td th:text="${citizen.address.apartment}"></td>
+                </tr>
+                <tr>
+                    <th>Street</th>
+                    <td th:text="${citizen.address.street}"></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td th:text="${citizen.address.city}"></td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td th:text="${citizen.address.country}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <div th:replace="template :: back-to-repository"></div>
+    </body>
+</html>

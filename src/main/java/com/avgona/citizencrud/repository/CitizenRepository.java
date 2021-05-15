@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CitizenRepository extends JpaRepository<Citizen, Integer> {
+public interface CitizenRepository extends JpaRepository<Citizen, Long> {
 
     // add a method to sort by last name
     public List<Citizen> findAllByOrderByLastNameAsc();

@@ -7,11 +7,11 @@ import java.util.List;
 public interface CitizenService {
     List<Citizen> findAll();
 
-    Citizen findById(int id);
+    Citizen findById(long id);
 
     void save(Citizen citizen);
 
-    void deleteById(int id);
+    void deleteById(long id);
 
     List<Citizen> searchBy(String name);
 

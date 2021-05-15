@@ -1,0 +1,28 @@
+server:
+  port: 5000
+
+# JDBC properties
+#
+app:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/citizen_directory?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 9682
+
+# Spring Data JPA properties
+spring:
+  data:
+    jpa:
+      repository:
+        packages: com.avgona.citizencrud.repository
+      entity:
+        packages-to-scan: com.avgona.citizencrud.entity
+
+
+# SECURITY JDBC properties
+#
+security:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/spring_security_demo_bcrypt?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 9682

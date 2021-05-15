@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Citizen repository</title>
+    </head>
+
+    <body class="container">
+
+        <div th:replace="template.html :: repository-header"></div>
+
+        <div th:replace="template.html :: user-role-panel"></div>
+
+        <div th:replace="template.html :: create-and-search-user"></div>
+
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Passport</th>
+                <th>View details</th>
+                <!-- The Column shows only for Managers and Admins-->
+                <th sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <!-- Works like 'for' in java through Model from @Controllers-->
+                <tr th:each="citizen : ${citizens}">
+                    <td th:text="${citizen.firstName}"></td>
+                    <td th:text="${citizen.lastName}"></td>
+                    <td th:text="${citizen.passportNumber}"></td>
+                    <td><div th:replace="template :: details-button"></div></td>
+                    <!-- Ability for Manager and Admin -->
+                    <td sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+                        <div th:replace="template.html :: update-button"></div>
+                        <div th:replace="template.html :: delete-button"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div th:replace="template.html :: logout"></div>
+    </body>
+</html>

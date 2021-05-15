@@ -12,6 +12,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/citizens")
 public class CitizenController {
+
     private final CitizenService citizenService;
 
     @Autowired
@@ -19,77 +20,64 @@ public class CitizenController {
         this.citizenService = citizenService;
     }
 
-    @GetMapping("/list")
-    public String listEmployees(Model model) {
-
-        // get citizens from db
+    @GetMapping
+    public String index(Model model) {
         List<Citizen> citizens = citizenService.findAll();
 
-        // add to the spring model
-        model.addAttribute("citizensAttr", citizens);
+        model.addAttribute("citizens", citizens);
 
-        return "list-citizens";
+        return "index";
     }
 
-    @GetMapping("/show-form-add")
-    public String showForm(Model model) {
+    @GetMapping("/add")
+    public String form(Model model) {
+        model.addAttribute("citizen", new Citizen());
 
-        // create model attribute to bind form data
-        Citizen citizen = new Citizen();
-
-        model.addAttribute("citizenAttr", citizen);
-
-        return "show-form";
+        return "form";
     }
 
-    @GetMapping("/show-form-update")
-    public String showFormUpdate(@RequestParam("citizenId") int id,
-                                 Model model) {
-
-        // get the citizen from the service
+    @GetMapping("/update")
+    public String update(@RequestParam("id") long id, Model model) {
         Citizen citizen = citizenService.findById(id);
 
+        model.addAttribute("citizen", citizen);
 
-        // set citizen as a model attribute to pre-populate the form
-        model.addAttribute("citizenAttr", citizen);
-
-        // send over to our form
-        return "show-form";
+        return "form";
     }
 
+    @GetMapping("/details")
+    public String viewDetails(@RequestParam("id") long id, Model model){
+        Citizen citizen = citizenService.findById(id);
+
+        model.addAttribute("citizen", citizen);
+
+        return "details";
+    }
 
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("citizen") Citizen citizen) {
-
-        // save the citizen
+    public String save(@ModelAttribute("citizen") Citizen citizen) {
         citizenService.save(citizen);
 
-        // use a redirect to prevent duplicate submissions
-        return "redirect:/citizens/list";
+        return "redirect:/citizens";
     }
 
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("citizenId") int id) {
-
-        // delete citizen by given id
+    public String delete(@RequestParam("id") int id) {
         citizenService.deleteById(id);
 
-        return "redirect:/citizens/list";
+        return "redirect:/citizens";
 
     }
 
 
     @GetMapping("/search")
-    public String search(@RequestParam("name") String name,
-                         Model theModel) {
-        // get citizens by LAST NAME
+    public String search(@RequestParam("name") String name, Model model) {
         List<Citizen> citizens = citizenService.searchBy(name);
 
-        // set searched list of citizens
-        theModel.addAttribute("citizensAttr", citizens);
+        model.addAttribute("citizens", citizens);
 
-        return "list-citizens";
+        return "index";
 
     }
 }

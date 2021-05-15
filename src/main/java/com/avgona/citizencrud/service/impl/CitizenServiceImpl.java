@@ -1,7 +1,8 @@
-package com.avgona.citizencrud.service;
+package com.avgona.citizencrud.service.impl;
 
 import com.avgona.citizencrud.entity.Citizen;
 import com.avgona.citizencrud.repository.CitizenRepository;
+import com.avgona.citizencrud.service.CitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CitizenServiceImpl implements CitizenService{
+public class CitizenServiceImpl implements CitizenService {
     private final CitizenRepository citizenRepository;
 
     @Autowired
@@ -23,7 +24,7 @@ public class CitizenServiceImpl implements CitizenService{
     }
 
     @Override
-    public Citizen findById(int id) {
+    public Citizen findById(long id) {
         Optional<Citizen> citizen = citizenRepository.findById(id);
 
         Citizen newCitizen;
@@ -42,7 +43,7 @@ public class CitizenServiceImpl implements CitizenService{
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         citizenRepository.deleteById(id);
     }
 
