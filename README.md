@@ -9,11 +9,13 @@
 * Java -v8
 * Spring boot(Spring Core, Spring MVC, Spring Data JPA)
 * Spring Security (JDBC Authentication with Encrypted Passwords)
-* MySQL, JPA, 
+* MySQL, JPA, Hibernate
 * Maven
-* Thymeleaf, HTML, CSS
+* Thymeleaf, HTML, CSS, Boostrap
 * Lombok
+
+![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/security.png?raw=true)
 
 ![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/main.png?raw=true)
 
-![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/security.png?raw=true)
+![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/db.png?raw=true)
