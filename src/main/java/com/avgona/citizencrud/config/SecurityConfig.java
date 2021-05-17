@@ -29,15 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/").authenticated()
                 .antMatchers("/citizens/show-form*").hasAnyRole("MANAGER", "ADMIN")
                 .antMatchers("/citizens/save*").hasAnyRole("MANAGER", "ADMIN")
                 .antMatchers("/citizens/delete").hasRole("ADMIN")
                 .antMatchers("/citizens/**").hasRole("EMPLOYEE")
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/resources/**", "/swagger*/**").permitAll()
                     .and()
                 .formLogin()
                     .loginPage("/login-form")
                     .loginProcessingUrl("/authenticateTheUser")
+                    .defaultSuccessUrl("/citizens/", true)
                 .permitAll()
                     .and()
                 .logout()

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,4 +33,10 @@ public class Citizen {
 
     @Embedded
     private Address address;
+
+    @ElementCollection
+    @CollectionTable(name = "foreign_citizenship", joinColumns = @JoinColumn(name = "citizen_id"))
+    @OrderColumn(name = "citizen_order")
+    @Column(name = "citizenship")
+    private List<String> foreignCitizenship = new ArrayList<>();
 }

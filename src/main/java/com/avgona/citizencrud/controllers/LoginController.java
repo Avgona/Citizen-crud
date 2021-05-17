@@ -1,4 +1,4 @@
-package com.avgona.citizencrud.controller;
+package com.avgona.citizencrud.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

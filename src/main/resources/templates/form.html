@@ -64,6 +64,19 @@
             <input required type="text" th:field="*{address.country}" id="country" class="form-control" placeholder="Enter country"/>
         </div>
 
+        <div class="form-row">
+            <div class="col">
+                <label for="foreignCitizenship1">Foreign citizenship #1</label>
+                <input type="text" th:field="*{foreignCitizenship}" id="foreignCitizenship1" class="form-control" placeholder="Leave it empty if you don't have a foreign citizenship"/>
+            </div>
+
+            <div class="col">
+                <label for="foreignCitizenship2">Foreign citizenship #2</label>
+                <input type="text" th:field="*{foreignCitizenship}" id="foreignCitizenship2" class="form-control" placeholder="Leave it empty if you don't have a foreign citizenship"/>
+            </div>
+        </div>
+
+        <br>
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 

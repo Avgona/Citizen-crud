@@ -1,4 +1,4 @@
-package com.avgona.citizencrud.controller;
+package com.avgona.citizencrud.controllers;
 
 import com.avgona.citizencrud.entity.Citizen;
 import com.avgona.citizencrud.service.CitizenService;
@@ -56,6 +56,7 @@ public class CitizenController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute("citizen") Citizen citizen) {
+        System.out.println(citizen.getForeignCitizenship());
         citizenService.save(citizen);
 
         return "redirect:/citizens";
@@ -63,11 +64,10 @@ public class CitizenController {
 
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") int id) {
+    public String delete(@RequestParam("id") long id) {
         citizenService.deleteById(id);
 
         return "redirect:/citizens";
-
     }
 
 
@@ -78,6 +78,5 @@ public class CitizenController {
         model.addAttribute("citizens", citizens);
 
         return "index";
-
     }
 }
