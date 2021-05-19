@@ -6,7 +6,7 @@
 The project was created for my portfolio to demostrate my skills, it always gets updates during gained new knowledge.
 + There's created full-functional MVC citizen layer with repository and service logic, which interacts with MySQL and uses JPA(Hibernate) entity. Thymeleaf serves as engine for displaying view and transmitting data from Java.
 + Additionally was created restful ambassador layer, which also iteracts with repository, services, works with MongoDB and here's left http request methods for testing rest layer.
-+ There's inside also rest documentation on basis of Swagger where's described rest end-points. 
++ Attached rest documentation on basis of Swagger where's described rest end-points by the address `/swagger-ui/index.html#`. 
 + To ease my life, I used Lombok library.
 
 ## Installation
