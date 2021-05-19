@@ -1,0 +1,20 @@
+POST http://localhost:5000/api/ambassadors
+Content-Type: application/json
+
+{
+  "firstName": "Manuel",
+  "lastName": "Francais",
+  "country": "FR",
+  "embassyNumber": 1847
+}
+
+###
+POST http://localhost:5000/api/ambassadors
+Content-Type: application/json
+
+{
+  "firstName": "Sven",
+  "lastName": "Andersson",
+  "country": "SE",
+  "embassyNumber": 747
+}

@@ -1,4 +1,4 @@
-package com.avgona.citizencrud.controllers;
+package com.avgona.citizencrud.controllers.mvc;
 
 import com.avgona.citizencrud.entity.Citizen;
 import com.avgona.citizencrud.service.CitizenService;

@@ -1,0 +1,7 @@
+GET http://localhost:5000/api/ambassadors/60a540b5a4c1a208c4161838
+Accept: application/json
+
+###
+GET http://localhost:5000/api/ambassadors/60a5411aa4c1a208c4161839
+Accept: application/json
+

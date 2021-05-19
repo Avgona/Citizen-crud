@@ -12,12 +12,13 @@ app:
 # Spring Data JPA properties
 spring:
   data:
+    repositories:
+      packages: com.avgona.citizencrud.repository
+    mongodb:
+      uri: mongodb://localhost:27017/avgona_db
     jpa:
-      repository:
-        packages: com.avgona.citizencrud.repository
       entity:
         packages-to-scan: com.avgona.citizencrud.entity
-
 
 # SECURITY JDBC properties
 #

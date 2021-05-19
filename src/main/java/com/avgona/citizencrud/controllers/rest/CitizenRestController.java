@@ -1,8 +1,7 @@
-package com.avgona.citizencrud.controllers;
+package com.avgona.citizencrud.controllers.rest;
 
 import com.avgona.citizencrud.entity.Citizen;
 import com.avgona.citizencrud.service.CitizenService;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/citizen")
+@RequestMapping("/api")
 public class CitizenRestController {
 
     private final CitizenService citizenService;
@@ -20,26 +19,26 @@ public class CitizenRestController {
         this.citizenService = citizenService;
     }
 
-    @ApiOperation(value = "Find all citizens")
-    @GetMapping
+    @ApiOperation("Find all citizens")
+    @GetMapping("/citizens")
     public List<Citizen> findAll() {
         return citizenService.findAll();
     }
 
-    @ApiOperation(value = "Show all details of citizen", notes = "type the id")
-    @GetMapping("/details/{id}")
+    @ApiOperation("Show all details of citizen")
+    @GetMapping("/citizens/details/{id}")
     public Citizen viewDetails(@PathVariable long id){
         return citizenService.findById(id);
     }
 
-    @ApiOperation(value = "Create new citizen")
-    @PostMapping("/save")
+    @ApiOperation("Create new citizen")
+    @PostMapping("/citizens/save")
     public Citizen save(Citizen citizen) {
         return citizen;
     }
 
-    @ApiOperation(value = "Detele a citizen", notes = "type the id")
-    @GetMapping("/delete/{id}")
+    @ApiOperation("Detele a citizen")
+    @GetMapping("/citizens/delete/{id}")
     public void delete(@PathVariable long id) {
         citizenService.deleteById(id);
     }

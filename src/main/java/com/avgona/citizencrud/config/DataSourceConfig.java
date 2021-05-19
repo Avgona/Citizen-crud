@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"${spring.data.jpa.repository.packages}"})
-public class DataSourceConfigs {
-
-    // Overriding two data source for entity data and security source
+@EnableMongoRepositories(basePackages = {"${spring.data.repositories.packages}"})
+@EnableJpaRepositories(basePackages = {"${spring.data.repositories.packages}"})
+public class DataSourceConfig {
 
     @Primary
     @Bean

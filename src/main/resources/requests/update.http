@@ -1,0 +1,9 @@
+PUT http://localhost:5000/api/ambassadors/60a541b3a4c1a208c416183a
+Content-Type: application/json
+
+{
+  "firstName": "Sven",
+  "lastName": "Andersson",
+  "country": "DE",
+  "embassyNumber": 747
+}
