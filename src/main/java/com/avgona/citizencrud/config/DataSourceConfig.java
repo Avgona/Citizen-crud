@@ -19,13 +19,13 @@ public class DataSourceConfig {
 
     @Primary
     @Bean
-    @ConfigurationProperties(prefix = "app.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource appDataSource(){
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.data.jpa.entity")
+    @ConfigurationProperties(prefix = "spring.data.entities")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, DataSource appDataSource) {
         return builder
                 .dataSource(appDataSource)

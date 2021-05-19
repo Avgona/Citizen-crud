@@ -1,11 +1,7 @@
-DROP DATABASE  IF EXISTS `spring_security_demo_bcrypt`;
+DROP DATABASE IF EXISTS `citizen_security`;
 
-CREATE DATABASE  IF NOT EXISTS `spring_security_demo_bcrypt`;
-USE `spring_security_demo_bcrypt`;
-
---
--- Table's structure `users`
---
+CREATE DATABASE IF NOT EXISTS `citizen_security`;
+USE `citizen_security`;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -15,25 +11,6 @@ CREATE TABLE `users` (
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- NOTE: The passwords are encrypted using BCrypt
---
--- A generation tool is avail at: https://www.bcryptcalculator.com/
---
--- Default passwords here are: fun123
---
-
-INSERT INTO `users` 
-VALUES 
-('john','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1),
-('mary','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1),
-('susan','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1);
-
-
---
--- Table's structure `authorities`
---
-
 DROP TABLE IF EXISTS `authorities`;
 CREATE TABLE `authorities` (
   `username` varchar(50) NOT NULL,
@@ -42,16 +19,13 @@ CREATE TABLE `authorities` (
   CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Insert data into `authorities` table
---
 
-INSERT INTO `authorities` 
-VALUES 
-('john','ROLE_EMPLOYEE'),
-('mary','ROLE_EMPLOYEE'),
-('mary','ROLE_MANAGER'),
-('susan','ROLE_EMPLOYEE'),
-('susan','ROLE_ADMIN');
+INSERT INTO `users` (`username`,`password`,`enabled`) VALUES ('john','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1);
+INSERT INTO `users` (`username`,`password`,`enabled`) VALUES ('mary','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1);
+INSERT INTO `users` (`username`,`password`,`enabled`) VALUES ('susan','{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K',1);
 
-
+INSERT INTO `authorities` (`username`,`authority`) VALUES ('john','ROLE_EMPLOYEE');
+INSERT INTO `authorities` (`username`,`authority`) VALUES ('mary','ROLE_EMPLOYEE');
+INSERT INTO `authorities` (`username`,`authority`) VALUES ('mary','ROLE_MANAGER');
+INSERT INTO `authorities` (`username`,`authority`) VALUES ('susan','ROLE_ADMIN');
+INSERT INTO `authorities` (`username`,`authority`) VALUES ('susan','ROLE_EMPLOYEE');

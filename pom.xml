@@ -28,7 +28,7 @@
 		</dependency>
 
 
-		<!--	______________________DATA, JPA, MySQL, MONGODB_____________________	-->
+		<!--	______________________DATA, JPA, MySQL, MongoDB, Liquibase_____________________	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

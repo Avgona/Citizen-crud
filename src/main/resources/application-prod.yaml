@@ -1,29 +1,26 @@
 server:
   port: 5000
 
-# JDBC properties
+# JDBC and Spring Data JPA properties
 #
-app:
+spring:
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3306/citizen_directory?useSSL=false&serverTimezone=UTC
+    jdbc-url: jdbc:mysql://localhost:3306/citizen_repository?useSSL=false&serverTimezone=UTC
     username: root
     password: 9682
-
-# Spring Data JPA properties
-spring:
   data:
     repositories:
       packages: com.avgona.citizencrud.repository
+    entities:
+      packages-to-scan: com.avgona.citizencrud.entity
     mongodb:
       uri: mongodb://localhost:27017/avgona_db
-    jpa:
-      entity:
-        packages-to-scan: com.avgona.citizencrud.entity
+
 
 # SECURITY JDBC properties
 #
 security:
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3306/spring_security_demo_bcrypt?useSSL=false&serverTimezone=UTC
+    jdbc-url: jdbc:mysql://localhost:3306/citizen_security?useSSL=false&serverTimezone=UTC
     username: root
     password: 9682
