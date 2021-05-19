@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "60a540b5a4c1a208c4161838"
+  },
+  "First_name": "Nord",
+  "Last_name": "Andersson",
+  "Country": "NO",
+  "Embassy_number": 38,
+  "_class": "com.avgona.citizencrud.entity.Ambassador"
+},{
+  "_id": {
+    "$oid": "60a5411aa4c1a208c4161839"
+  },
+  "First_name": "Manuel",
+  "Last_name": "Francais",
+  "Country": "FR",
+  "Embassy_number": 1847,
+  "_class": "com.avgona.citizencrud.entity.Ambassador"
+},{
+  "_id": {
+    "$oid": "60a541b3a4c1a208c416183a"
+  },
+  "First_name": "Sven",
+  "Last_name": "Andersson",
+  "Country": "DE",
+  "Embassy_number": 747,
+  "_class": "com.avgona.citizencrud.entity.Ambassador"
+}]
