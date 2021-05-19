@@ -7,7 +7,7 @@
 
 #### **Technologies that are used**:
 * Java v8
-* Spring boot(Spring Core, Spring MVC, Spring Data JPA)
+* Spring boot(Spring Core, Spring MVC, Spring Data JPA, Swagger)
 * Spring Security (JDBC Authentication with Encrypted Passwords)
 * MySQL, JPA, Hibernate
 * Maven
@@ -21,3 +21,5 @@
 ![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/details.png?raw=true)
 
 ![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/db.png?raw=true)
+
+![Image of Maint](https://github.com/Avgona/Citizen-crud/blob/main/images/swagger.png?raw=true)
